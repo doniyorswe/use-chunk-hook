@@ -1,4 +1,4 @@
-import { Chunk, ChunkUploadResponse, SplittedFileResult } from "../types";
+import { ChunkUploadResponse, SplittedFileResult } from "../types";
 import { requestUploadOnChunk } from "./requests";
 
 interface UploaderParams {
@@ -9,7 +9,7 @@ interface UploaderParams {
   onProgress?: (progress: number) => void;
 }
 
-const uploader = async ({
+export const uploader = async ({
   splittedFile,
   fileId,
   baseUrl,
@@ -41,15 +41,10 @@ const uploader = async ({
 
     if (onProgress) {
       onProgress(
-        Math.min(
-          100,
-          Math.round((index / splittedFile.chunks.length) * 100),
-        ),
+        Math.min(100, Math.round((index / splittedFile.chunks.length) * 100)),
       );
     }
   }
 
   return results;
 };
-
-export { uploader };

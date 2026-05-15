@@ -1,2 +1,14 @@
+// hooks
 export { useChunkUpload } from "./hooks/useChunkUpload";
-export type * from "./types";
+
+// types
+export type {
+  UploadStatus,
+  UseChunkUploadConfig,
+  UseChunkUploadOptions,
+  ChunkUploadResponse,
+  ChunkSize,
+  Chunk,
+  ChunkStatus,
+  SplittedFileResult,
+} from "./types";

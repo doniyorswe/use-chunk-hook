@@ -1,2 +1,13 @@
-export { type UploadStatus } from "./upload";
-export { type ChunkSize } from "./chunk";
+export type {
+  UploadStatus,
+  UseChunkUploadConfig,
+  UseChunkUploadOptions,
+  ChunkUploadResponse,
+} from "./upload";
+
+export type {
+  ChunkSize,
+  Chunk,
+  ChunkStatus,
+  SplittedFileResult,
+} from "./chunk";
