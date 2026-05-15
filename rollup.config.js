@@ -2,26 +2,24 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 
 export default [
-  // 1. Asosiy JavaScript build
   {
     input: "src/index.ts",
     output: [
       {
-        file: "dist/index.js", // CommonJS: require() uchun
+        file: "dist/index.js", // CommonJS: require() for Node.js
         format: "cjs",
-        sourcemap: true,
+        sourcemap: false,
       },
       {
-        file: "dist/index.esm.js", // ESM: import uchun
+        file: "dist/index.esm.js", // ESM: import for browsers and modern bundlers
         format: "esm",
-        sourcemap: true,
+        sourcemap: false,
       },
     ],
     plugins: [typescript()],
-    external: ["react"], // React'ni bundle'ga qo'shma!
+    external: ["react"], // Don't bundle React
   },
-
-  // 2. TypeScript tiplar build
+  // 2. TypeScript type definitions
   {
     input: "src/index.ts",
     output: { file: "dist/index.d.ts", format: "esm" },
