@@ -1,1 +1,2 @@
-export { type UploadStatus } from "./upload.types";
+export { type UploadStatus } from "./upload";
+export { type ChunkSize } from "./chunk";

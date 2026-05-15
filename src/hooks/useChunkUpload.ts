@@ -1,33 +1,30 @@
 import { useState } from "react";
-import {
-  UploadStatus,
-  UseChunkUploadConfig,
-  UseChunkUploadOptions,
-} from "../types";
+import { UseChunkUploadConfig, UseChunkUploadOptions } from "../types";
+import { splitFile } from "../utils/splitFile";
+import { uploader } from "../utils/uploader";
+
+const fileId = "1";
 
 export function useChunkUpload(
-  _url: string,
+  url: string,
   _config?: UseChunkUploadConfig,
   options?: UseChunkUploadOptions,
 ) {
-  const { onStart, onEnd } = options || {};
+  const { chunkSize = "2048", parallelRequests = 3 } = options || {};
 
-  const [status, setStatus] = useState<UploadStatus>("idle");
-  const [isLoading, setIsLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
 
-  const upload = async (_payload: unknown, options?: UseChunkUploadOptions) => {
-    options?.onStart?.();
-    onStart?.();
+  const upload = async (file: File) => {
+    const splitted = splitFile(file, chunkSize);
 
-    setIsLoading(true);
-    setStatus("uploading");
-
-    setTimeout(() => {
-      setStatus("completed");
-      setIsLoading(false);
-      onEnd?.();
-    }, 1000);
+    await uploader({
+      splittedFile: splitted,
+      fileId: fileId,
+      baseUrl: url,
+      parallelRequests,
+      onProgress: (progress) => setProgress(progress),
+    });
   };
 
-  return { upload, status, isLoading };
+  return { upload, progress };
 }
