@@ -1,2 +1,2 @@
-export { useChunkHook } from "./useChunkHook";
-export type { UploadStatus } from "./types";
+export { useChunkUpload } from "./hooks/useChunkUpload";
+export type * from "./types";

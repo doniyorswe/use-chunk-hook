@@ -1,16 +1,26 @@
-import './App.css'
-import { useChunkHook } from '../../src'
+import './App.css';
+import { useChunkUpload } from '../../src';
 
 function App() {
-  const { status, uploadFile, isLoading } = useChunkHook()
+  const { status, upload, isLoading } = useChunkUpload('https://example.com/upload', {
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
+  }, {
+    onStart: () => {
+      console.log('Upload started');
+    },
+    onEnd: () => {  
+      console.log('Upload ended');
+    },
+  });
 
   return (
     <section id="center">
-
       <button
         type="button"
         className="counter"
-        onClick={uploadFile}
+        onClick={upload}
         disabled={isLoading}
       >
         {isLoading ? "Uploading..." : "Handle Upload"}
