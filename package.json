@@ -1,6 +1,6 @@
 {
   "name": "use-chunk-hook",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A lightweight React hook for chunked file upload and download",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
