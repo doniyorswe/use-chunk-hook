@@ -5,3 +5,4 @@ rollup.config.js
 .github/
 .gitignore
 docs/
+.npmrc
