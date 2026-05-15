@@ -1,8 +1,6 @@
-import { AxiosRequestConfig } from "axios";
-
 export type UploadStatus = "idle" | "uploading" | "completed" | "error";
 
-export type UseChunkUploadConfig = AxiosRequestConfig;
+export type UseChunkUploadConfig = RequestInit;
 
 export type UseChunkUploadOptions = {
   onSuccess?: () => void;

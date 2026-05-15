@@ -1,5 +1,5 @@
 import './App.css';
-import { useChunkUpload } from '../../src';
+import { useChunkUpload } from '@/hooks';
 
 function App() {
   const { status, upload, isLoading } = useChunkUpload('https://example.com/upload', {
@@ -10,7 +10,7 @@ function App() {
     onStart: () => {
       console.log('Upload started');
     },
-    onEnd: () => {  
+    onEnd: () => {
       console.log('Upload ended');
     },
   });
