@@ -1,1 +1,1 @@
-export type UploadStatus = "idle" | "uploading" | "completed" | "error";
+export type * from "./types/upload.types";
