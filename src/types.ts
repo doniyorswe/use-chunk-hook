@@ -1,1 +1,2 @@
-export type * from "./types/upload.types";
+export type * from "./types/upload";
+export type * from "./types/chunk";
